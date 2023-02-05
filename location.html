@@ -1,0 +1,40 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<title>Javascript Geolocation API </title>  
+<script>  
+    let output = document.getElementById("output");  
+    function getlocation() {  
+        if(navigator.geolocation){  
+            navigator.geolocation.getCurrentPosition(displayPosition)  
+          }  
+        else  
+        {  
+             alert("Your browser does not support Geolocation API.")  
+         }
+          }  
+       
+     function displayPosition(position){  
+       let output = "<br>Your current location details<br>" + "Latitude: " + position.coords.latitude + "<br>" + "Longitude: " +    position.coords.longitude;  
+       document.getElementById("output").innerHTML = output;
+       let mapurl = "https://www.google.com/maps/@" + position.coords.latitude + "," + position.coords.longitude + ",14z";
+       document.getElementById("mapurl").innerHTML =  "<a href='" + mapurl +"' target='_blank' > Click here to see your location on the map.</a>";
+
+     }  
+</script>  
+</head>  
+<body>
+<div align=center>
+
+<div style="font-family:sans-serif;background-color:white;width:50%;border:1px solid">    
+  <h1>Hello!</h1>
+<button style="background-color:skyblue;" onclick="getlocation()"><h2>Show my location</h2></button><br>
+<span id="output"></span><br><br>
+<span id="mapurl"></span><br><br>
+
+
+</div>
+
+</div>
+</body>  
+</html> 
